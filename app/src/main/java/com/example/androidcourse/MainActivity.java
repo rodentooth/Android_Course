@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.androidcourse.ui.login.LoginActivity;
+import com.example.androidcourse.EndlessModeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +22,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getBaseContext(), LoginActivity.class);
                 //i.putExtra("PersonID", personID);
+                startActivity(i);
+            }
+        });
+
+        findViewById(R.id.btnEndless).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getBaseContext(), EndlessModeActivity.class);
+
                 startActivity(i);
             }
         });
