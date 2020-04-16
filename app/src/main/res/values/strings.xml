@@ -11,4 +11,6 @@
     <string name="login_failed">"Login failed"</string>
     <string name="prompt_repeat_password">Repeat your Password</string>
     <string name="prompt_username">Username</string>
+    <string name="ivPlay_name">Playbutton</string>
+    <string name="tvScore">Score:</string>
 </resources>
