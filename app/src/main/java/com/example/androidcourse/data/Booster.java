@@ -14,4 +14,12 @@ public class Booster {
         TapBonus,
         IdleTap
     }
+
+    private final type type;
+    private int tapFrequencyPerSecond;
+    private int tapBonusPerTap;
+
+    Booster(type t){
+        this.type = t;
+    }
 }
