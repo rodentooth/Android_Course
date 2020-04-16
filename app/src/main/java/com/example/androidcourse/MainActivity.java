@@ -5,10 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
-import com.example.androidcourse.ui.login.LoginActivity;
-import com.example.androidcourse.EndlessModeActivity;
+import com.example.androidcourse.gameModes.EndlessModeActivity;
+import com.example.androidcourse.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 

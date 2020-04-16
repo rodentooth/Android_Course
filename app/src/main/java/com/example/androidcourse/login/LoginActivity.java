@@ -1,4 +1,4 @@
-package com.example.androidcourse.ui.login;
+package com.example.androidcourse.login;
 
 import android.os.Bundle;
 

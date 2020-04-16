@@ -1,4 +1,4 @@
-package com.example.androidcourse;
+package com.example.androidcourse.gameModes;
 
 import android.os.Bundle;
 import android.service.autofill.TextValueSanitizer;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.androidcourse.R;
 
 
 public class EndlessModeActivity extends AppCompatActivity {
