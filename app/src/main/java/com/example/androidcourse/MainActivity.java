@@ -3,11 +3,13 @@ package com.example.androidcourse;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
-import com.example.androidcourse.gameModes.EndlessModeActivity;
-import com.example.androidcourse.login.LoginActivity;
+import com.example.androidcourse.ui.login.LoginActivity;
+import com.example.androidcourse.EndlessModeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +26,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        findViewById(R.id.btnMenu).setOnClickListener((event) ->
+        {
+            Intent i = new Intent(getBaseContext(), EndlessModeActivity.class);
+            startActivity(i);
+        });
+
+
+
 
         findViewById(R.id.btnEndless).setOnClickListener(new View.OnClickListener() {
             @Override
