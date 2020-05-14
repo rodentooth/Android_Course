@@ -20,7 +20,7 @@ public class Score {
 
     }
 
-    public static synchronized Score getInstance () {
+    public static Score getInstance () {
         if (Score.instance == null) {
             Score.instance = new Score ();
         }
@@ -28,7 +28,8 @@ public class Score {
     }
 
     public void addPoint(int amount){
-        scorePoints.getValue().set(amount);
+        scorePoints.getValue().addAndGet(amount);
+        scorePoints.postValue(scorePoints.getValue());
         saveScore();
     }
 

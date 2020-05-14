@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 
 import com.example.androidcourse.Models.CustomMenuItemAdapter;
@@ -68,8 +69,7 @@ public class EndlessModeActivity extends AppCompatActivity {
         scoreObj.getScorePoints().observe(this, new Observer<AtomicInteger>() {
             @Override
             public void onChanged(AtomicInteger atomicInteger) {
-                Log.d(TAG, " "+ atomicInteger.get());
-                scoreRN.setText("" + atomicInteger.get());
+                scoreRN.setText("" + atomicInteger.get()); // update Score text if variable changes
             }
         });
 
@@ -89,24 +89,18 @@ public class EndlessModeActivity extends AppCompatActivity {
         ArrayAdapter arrayAdapter = new CustomMenuItemAdapter(this, R.layout.custom_dialog_listitem_layout, menu.getMenuItems());
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener((adapterView, view, which, l) -> {
-          //  Log.d(TAG, "showAssignmentsList: " + menu.getMenuItems().get(which).toString());
             MenuItem item = menu.getMenuItems().get(which);
-            item.getItem().getEffect().runEffect();
-            // TODO : Listen to click callbacks at the position
+            item.getItem().getEffect().runEffect(); // Executes the effect of the bought Item
+            dialog.dismiss();
         });
         dialog.show();
     }
 
 
 
-
-
-
-
     // No longer in use
     public void getPoint(View view){
         scoreObj.addPoint(1);
-        scoreRN.setText(Integer.toString(scoreObj.getScore()));
     }
 
 
