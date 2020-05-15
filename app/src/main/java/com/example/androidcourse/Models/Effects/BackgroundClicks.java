@@ -9,9 +9,9 @@ import com.example.androidcourse.Models.Score;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class BackgroundSingleClick extends Effect {
+public class BackgroundClicks extends Effect {
 
-    public BackgroundSingleClick(String name, long duration, boolean repeatable, long interval) {
+    public BackgroundClicks(String name, long duration, boolean repeatable, long interval) {
         super(name, duration, repeatable, interval);
     }
 

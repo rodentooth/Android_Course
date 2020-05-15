@@ -1,5 +1,7 @@
 package com.example.androidcourse.Models.Effects;
 
+import androidx.lifecycle.ViewModel;
+
 public abstract class Effect implements EffectI {
     String name; // Name of the effect
     long duration; // How long should the effect run

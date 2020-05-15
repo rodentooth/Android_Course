@@ -3,10 +3,20 @@ package com.example.androidcourse.Models.Effects;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+
+import com.example.androidcourse.App;
+import com.example.androidcourse.Models.Score;
+
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class DoubleClick extends Effect {
+public class DoubleClick extends Effect implements LifecycleOwner {
 
     private boolean started = false;
     public DoubleClick(String name, long duration, boolean repeatable, long interval) {
@@ -26,7 +36,8 @@ public class DoubleClick extends Effect {
             if (this.duration > 0) {
                 Timer timer = new Timer(true);
                 if (this.interval > 0) {
-                    timer.scheduleAtFixedRate(new TimerTask() {
+                            // Score.getInstance().getScorePoints().observeForever();
+                    timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
                             if (System.currentTimeMillis() - startMilliseconds > duration) {
@@ -36,21 +47,19 @@ public class DoubleClick extends Effect {
                                 effect();
                             }
                         }
-                    }, 0, interval);
+                    }, 0, duration);
                 }
             }
             else{
                 effect();
             }
-            /*
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    effect();
-                }
-            }, 0, duration);
 
-             */
         }
+    }
+
+    @NonNull
+    @Override
+    public Lifecycle getLifecycle() {
+        return null;
     }
 }
