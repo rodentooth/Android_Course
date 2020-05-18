@@ -2,14 +2,9 @@ package com.example.androidcourse;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.service.autofill.TextValueSanitizer;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -17,7 +12,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 
 import com.example.androidcourse.Models.CustomMenuItemAdapter;
@@ -26,8 +20,6 @@ import com.example.androidcourse.Models.MenuItem;
 import com.example.androidcourse.Models.Score;
 
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static android.content.SharedPreferences.*;
 
 
 public class EndlessModeActivity extends AppCompatActivity {
@@ -55,8 +47,8 @@ public class EndlessModeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_endlessmode);
 
         score = findViewById(R.id.tvScore);
-        scoreRN = findViewById(R.id.tvScoreRN);
-        play = findViewById(R.id.ivPlay);
+        scoreRN = findViewById(R.id.tvCurrentScore);
+        play = findViewById(R.id.ivPlayButton);
 
 
         findViewById(R.id.openMenu).setOnClickListener((event) ->
@@ -98,7 +90,7 @@ public class EndlessModeActivity extends AppCompatActivity {
 
 
 
-    // No longer in use
+
     public void getPoint(View view){
         scoreObj.addPoint(1);
     }

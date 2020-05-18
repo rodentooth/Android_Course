@@ -13,4 +13,12 @@
     <string name="prompt_username">Username</string>
     <string name="ivPlay_name">Playbutton</string>
     <string name="tvScore">Score:</string>
+
+    <string-array name="difficultyFindCure">
+        <item>Easy (Range: 100)</item>
+        <item>Medium (Range: 1000)</item>
+        <item>Hard (Range: 10000)</item>
+        <item>Impossible! (Range: 100000)</item>
+    </string-array>
+
 </resources>

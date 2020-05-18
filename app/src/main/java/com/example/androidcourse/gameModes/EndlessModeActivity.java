@@ -1,7 +1,6 @@
 package com.example.androidcourse.gameModes;
 
 import android.os.Bundle;
-import android.service.autofill.TextValueSanitizer;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,8 +22,8 @@ public class EndlessModeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_endlessmode);
 
         score = findViewById(R.id.tvScore);
-        scoreRN = findViewById(R.id.tvScoreRN);
-        play = findViewById(R.id.ivPlay);
+        scoreRN = findViewById(R.id.tvCurrentScore);
+        play = findViewById(R.id.ivPlayButton);
         scoreRN.setText(Integer.toString(scorecounter));
     }
 

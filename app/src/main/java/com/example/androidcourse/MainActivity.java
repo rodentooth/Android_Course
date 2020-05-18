@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.example.androidcourse.ui.login.LoginActivity;
 import com.example.androidcourse.EndlessModeActivity;
+import com.example.androidcourse.FindTheCureActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +45,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        findViewById(R.id.btnFindCure).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getBaseContext(), FindTheCureActivity.class);
+
+                startActivity(i);
+            }
+        });
+
+
 
     }
 
