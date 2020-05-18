@@ -19,7 +19,7 @@ public class Booster {
     private int tapFrequencyPerSecond;
     private int tapBonusPerTap;
 
-    
+
     Booster(type t){
         this.type = t;
     }

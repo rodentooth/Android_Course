@@ -1,12 +1,11 @@
 package com.example.androidcourse.Models;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.androidcourse.App;
+import com.example.androidcourse.data.ObjectJsonConverter;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -16,7 +15,7 @@ public class Score {
     public static final String SHAREDPREF = "sharedpref";
     public static final String HIGHSCORE = "highscore";
 
-    private Score () {
+    public Score() {
 
     }
 
@@ -43,15 +42,34 @@ public class Score {
     }
 
     public void saveScore() {
+
+        //Convert the value of the scoreobject to an Json String
+        ObjectJsonConverter converter = new ObjectJsonConverter();
+        String scorepoints = converter.convertObjectToJson(scorePoints);
+
         SharedPreferences sharedPreferences = App.getAppContext().getSharedPreferences(SHAREDPREF, App.getAppContext().MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(HIGHSCORE, scorePoints.getValue().intValue());
-        editor.commit();
+        editor.putString(HIGHSCORE, scorepoints);
+        editor.apply();
     }
 
     public MutableLiveData<AtomicInteger> loadScore(){
-        SharedPreferences sharedPreferences = App.getAppContext().getSharedPreferences(SHAREDPREF,  App.getAppContext().MODE_PRIVATE);
-        scorePoints.setValue(new AtomicInteger(sharedPreferences.getInt(HIGHSCORE,0 )));
+
+        //get the shared preferences
+        String savedScoreString = App.getAppContext().getSharedPreferences(SHAREDPREF,  App.getAppContext().MODE_PRIVATE).getString(HIGHSCORE,"" );
+
+        //Convert the Json string to a score Object
+        ObjectJsonConverter converter = new ObjectJsonConverter();
+        MutableLiveData<Integer> savedScore = (MutableLiveData<Integer>) converter.convertJsonToObject(savedScoreString, MutableLiveData.class);
+
+
+        if(savedScore==null)
+            scorePoints.setValue(new AtomicInteger(0));
+        else
+            //Well it actually converts it to a normal integer. so here we go.
+            scorePoints.setValue(new AtomicInteger(savedScore.getValue()));
+
+        System.out.println("score is: "+scorePoints.getValue());
         return scorePoints;
     }
 }
