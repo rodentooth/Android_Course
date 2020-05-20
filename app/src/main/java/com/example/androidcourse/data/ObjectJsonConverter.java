@@ -27,6 +27,10 @@ public class ObjectJsonConverter {
     }
 
 
+    /*
+    * s => the string to convert into -> c
+    * c => the specific class
+     */
     public static Object convertJsonToObject(String s, Class c){
         Object o = null;
 

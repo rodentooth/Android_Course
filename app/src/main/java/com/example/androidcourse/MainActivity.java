@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btnMenu).setOnClickListener((event) ->
         {
-            Intent i = new Intent(getBaseContext(), EndlessModeActivity.class);
+            Intent i = new Intent(getBaseContext(), Leaderboard_Stats.class);
             startActivity(i);
         });
 

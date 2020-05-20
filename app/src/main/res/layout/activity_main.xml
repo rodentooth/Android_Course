@@ -23,49 +23,43 @@
         android:id="@+id/button"
         android:layout_width="150dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
         android:text="Go To Login Activity"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnMenu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.643" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnMenu"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:text="Menu Preview"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="32dp"
+        android:text="Leaderboard + Stats"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.524"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.43" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnEndless"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="16dp"
         android:text="Endless mode"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFindCure"
-        app:layout_constraintVertical_bias="0.588" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnFindCure"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="16dp"
         android:text="Find the Cure"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btnEndless"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.835" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
