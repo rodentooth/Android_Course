@@ -19,16 +19,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+       /* findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getBaseContext(), LoginActivity.class);
                 //i.putExtra("PersonID", personID);
                 startActivity(i);
             }
-        });
+        });*/
 
-        findViewById(R.id.btnMenu).setOnClickListener((event) ->
+        findViewById(R.id.btnLeaderboard).setOnClickListener((event) ->
         {
             Intent i = new Intent(getBaseContext(), Leaderboard_Stats.class);
             startActivity(i);

@@ -13,6 +13,10 @@
     <string name="prompt_username">Username</string>
     <string name="ivPlay_name">Playbutton</string>
     <string name="tvScore">Score:</string>
+    <string name="ivMain">Startscreen</string>
+    <string name="btnLeaderboard">Leaderboard + Stats</string>
+    <string name="btnEndless">Endless Mode</string>
+    <string name="btnFindCure">Find the Cure</string>
 
     <string-array name="difficultyFindCure">
         <item>Easy (Range: 100)</item>
