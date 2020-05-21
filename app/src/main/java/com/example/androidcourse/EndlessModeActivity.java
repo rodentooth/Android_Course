@@ -47,7 +47,7 @@ public class EndlessModeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endlessmode);
 
-        // scoreObj =  scoreObj.getScore();
+        scoreObj =  Score.getInstance();
 
 
 
@@ -97,7 +97,7 @@ public class EndlessModeActivity extends AppCompatActivity {
 
 
     public void getPoint(View view){
-        scoreObj.addPoint(1);
+        scoreObj.addPoint(1, true);
     }
 
 

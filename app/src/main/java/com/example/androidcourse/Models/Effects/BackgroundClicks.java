@@ -17,7 +17,7 @@ public class BackgroundClicks extends Effect {
 
     @Override
     public void effect() {
-        Score.getInstance().addPoint(1);
+        Score.getInstance().addPoint(1, false);
     }
 
     @Override

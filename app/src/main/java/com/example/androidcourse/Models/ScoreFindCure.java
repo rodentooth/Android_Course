@@ -28,7 +28,7 @@ public class ScoreFindCure {
       return ScoreFindCure.instance;
     }
 
-    public void addPoint(int amount) {
+    public void addPoint(int amount, boolean click) {
         scorePointsFindCure.getValue().addAndGet(amount);
         scorePointsFindCure.postValue(scorePointsFindCure.getValue());
         saveScore();
