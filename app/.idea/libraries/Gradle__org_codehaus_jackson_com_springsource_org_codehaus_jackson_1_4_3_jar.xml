@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.codehaus.jackson:com.springsource.org.codehaus.jackson:1.4.3@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.jackson/com.springsource.org.codehaus.jackson/1.4.3/3b47d81d97c9a3141345daa3cb2163afdec2672/com.springsource.org.codehaus.jackson-1.4.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.jackson/com.springsource.org.codehaus.jackson/1.4.3/ded6607bd7dd4993c594dfb6ada2283ea5776668/com.springsource.org.codehaus.jackson-1.4.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
