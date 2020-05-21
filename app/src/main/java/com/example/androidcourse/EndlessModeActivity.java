@@ -29,8 +29,8 @@ public class EndlessModeActivity extends AppCompatActivity {
     ImageView play;
     int scorecounter; //needs to be changed vor shared preferences
 
-    //Score scoreObj = Score.getInstance();
-    Score scoreObj;
+    Score scoreObj = Score.getInstance();
+
 
 
     public static final String SHAREDPREF = "sharedpref";
@@ -47,7 +47,7 @@ public class EndlessModeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endlessmode);
 
-        scoreObj =  new Score();
+        // scoreObj =  scoreObj.getScore();
 
 
 
