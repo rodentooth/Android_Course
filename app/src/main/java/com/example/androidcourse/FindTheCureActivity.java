@@ -43,6 +43,7 @@ public class FindTheCureActivity extends AppCompatActivity {
     public static final String CURETARGETSCORE = "curetargetscore";
     public static final String CUREDIFFICULTY = "curedifficulty";
     private static final String CURRSCOREFINDCURE = "currscorefindcure";
+    private static final String NROFCURESFOUND = "nrofcuresfound";
 
 
     @Override
@@ -153,9 +154,9 @@ public class FindTheCureActivity extends AppCompatActivity {
     public void getPoint(View view){
         scoreObj.addPoint(1);
         //check whether the cure was found!
-        if (scoreObj.checkIfCureWasFound()){ //
-
-           Dialog dialog = getGameWonDialog();
+        if (scoreObj.checkIfCureWasFound()){ // do stuff when the cure was found!
+            increaseNrOfWinsFound();
+            Dialog dialog = getGameWonDialog();
             dialog.show();
             resetValues();
         }
@@ -219,6 +220,16 @@ public class FindTheCureActivity extends AppCompatActivity {
         AlertDialog dialog = alertBuilder.create();
         dialog.setCanceledOnTouchOutside(false);
         return dialog;
+
+    }
+
+    public void increaseNrOfWinsFound(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Integer nrOfCures = sharedPreferences.getInt("nrofcuresfound", 0);
+        nrOfCures++;
+        editor.putInt(NROFCURESFOUND, nrOfCures);
+        editor.apply();
+        System.out.println(sharedPreferences.getAll());
 
     }
 
