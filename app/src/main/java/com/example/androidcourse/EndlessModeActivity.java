@@ -5,9 +5,13 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,6 +23,8 @@ import com.example.androidcourse.Models.Menu;
 import com.example.androidcourse.Models.MenuItem;
 import com.example.androidcourse.Models.Score;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -46,7 +52,7 @@ public class EndlessModeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endlessmode);
-
+        final LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout);
         scoreObj =  Score.getInstance();
 
 
@@ -63,10 +69,49 @@ public class EndlessModeActivity extends AppCompatActivity {
 
         scoreObj.loadScore();
 
+
         scoreObj.getScorePoints().observe(this, new Observer<AtomicInteger>() {
             @Override
             public void onChanged(AtomicInteger atomicInteger) {
                 scoreRN.setText("" + atomicInteger.get()); // update Score text if variable changes
+
+            }
+        });
+
+
+        Score.getInstance().getMidSum().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer sum) {
+                TextView textView = new TextView(App.getAppContext());
+                textView.setText("+ "+ sum);
+                ll.addView(textView);
+                Log.d(TAG, "" + sum); // update Score text if variable changes
+
+                final Animation out = new AlphaAnimation(1.0f, 0.0f);
+
+               // out.setRepeatMode(Animation.REVERSE);
+                out.setDuration(2000);
+                out.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        ll.removeView(textView);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                textView.startAnimation(out);
+
+
+
+
             }
         });
 

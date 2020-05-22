@@ -3,21 +3,43 @@ package com.example.androidcourse.Models;
 import android.content.SharedPreferences;
 
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import com.example.androidcourse.App;
 import com.example.androidcourse.data.ObjectJsonConverter;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Score {
     private static Score instance;
     private MutableLiveData<AtomicInteger> scorePoints = new MutableLiveData<>();
     private MutableLiveData<AtomicInteger> clickCount = new MutableLiveData<>();
+    private MutableLiveData<Integer> midSum = new MutableLiveData<>();
+
+
     public static final String SHAREDPREF = "sharedpref";
     public static final String HIGHSCORE = "highscore";
 
     public Score() {
-
+        scorePoints.observeForever(new Observer<AtomicInteger>() {
+            boolean currentlyRunning = false;
+            @Override
+            public void onChanged(AtomicInteger atomicInteger) {
+                if(!currentlyRunning){
+                    currentlyRunning = true;
+                    int sum = atomicInteger.get();
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            midSum.postValue( ((atomicInteger.get() + 1)- sum) );
+                            currentlyRunning = false;
+                        }
+                    }, 1000);
+                }
+            }
+        });
     }
 
     public static Score getInstance () {
@@ -51,6 +73,9 @@ public class Score {
         return clickCount;
     }
 
+    public MutableLiveData<Integer> getMidSum() {
+        return midSum;
+    }
 
     public void saveScore() {
 

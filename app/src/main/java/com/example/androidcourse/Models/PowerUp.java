@@ -14,11 +14,12 @@ public class PowerUp {
     String name;
     Effect effect;
     Bitmap icon;
-    double price;
-    public PowerUp(String name, Effect effect, int iconName, Context context){
+    long price;
+    public PowerUp(String name, Effect effect, int iconName, Context context, long price){
         this.effect = effect;
         this.name = name;
         this.icon = BitmapFactory.decodeResource(context.getResources(), iconName);
+        this.price = price;
     }
 
     public Effect getEffect() {
