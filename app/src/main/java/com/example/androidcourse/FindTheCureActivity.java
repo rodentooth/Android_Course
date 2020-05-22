@@ -21,6 +21,8 @@ import com.example.androidcourse.Models.CustomMenuItemAdapter;
 import com.example.androidcourse.Models.Menu;
 import com.example.androidcourse.Models.MenuItem;
 import com.example.androidcourse.Models.ScoreFindCure;
+
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -105,10 +107,10 @@ public class FindTheCureActivity extends AppCompatActivity {
     }
 
     public void setCureTargetScore(String s) {
-        //String[] listItems = getResources().getStringArray(R.array.difficultyFindCure);
-        // Note: Find way to make the case loop with the string array instead of hardcoded strings
+
         int range = 0;
         int targetScore;
+
         switch(s) {
             case "Easy (Range: 100)": range = 100;
             break;
@@ -120,7 +122,8 @@ public class FindTheCureActivity extends AppCompatActivity {
             break;
         }
 
-        targetScore = ThreadLocalRandom.current().nextInt(0, range + 1);
+        Random rand = new Random();
+        targetScore = rand.nextInt(range - 0)+1;
 
         // save in sharedPreference
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -128,7 +131,6 @@ public class FindTheCureActivity extends AppCompatActivity {
         editor.putInt(CURETARGETSCORE, targetScore);
         editor.apply();
         System.out.println(sharedPreferences.getAll());
-
 
     }
 
