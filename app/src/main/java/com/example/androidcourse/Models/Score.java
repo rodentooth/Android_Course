@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Score {
     private static Score instance;
     private MutableLiveData<AtomicInteger> scorePoints = new MutableLiveData<>();
+    private MutableLiveData<AtomicInteger> clickCount = new MutableLiveData<>();
     public static final String SHAREDPREF = "sharedpref";
     public static final String HIGHSCORE = "highscore";
 
@@ -26,9 +27,13 @@ public class Score {
         return Score.instance;
     }
 
-    public void addPoint(int amount){
-        scorePoints.getValue().addAndGet(amount);
-        scorePoints.postValue(scorePoints.getValue());
+    public void addPoint(int amount, boolean click){
+        if(click){
+            this.clickCount.getValue().addAndGet(1);
+            this.clickCount.postValue(clickCount.getValue());
+        }
+        this.scorePoints.getValue().addAndGet(amount);
+        this.scorePoints.postValue(scorePoints.getValue());
         saveScore();
     }
 
@@ -40,6 +45,12 @@ public class Score {
     public MutableLiveData<AtomicInteger> getScorePoints() {
         return scorePoints;
     }
+
+    // getClickCount
+    public MutableLiveData<AtomicInteger> getClickCount() {
+        return clickCount;
+    }
+
 
     public void saveScore() {
 
@@ -64,12 +75,13 @@ public class Score {
 
 
         if(savedScore==null)
-            scorePoints.setValue(new AtomicInteger(0));
+            this.scorePoints.setValue(new AtomicInteger(0));
         else
             //Well it actually converts it to a normal integer. so here we go.
-            scorePoints.setValue(new AtomicInteger(savedScore.getValue()));
+            this.scorePoints.setValue(new AtomicInteger(savedScore.getValue()));
 
         System.out.println("score is: "+scorePoints.getValue());
+        clickCount.setValue(new AtomicInteger(0));
         return scorePoints;
     }
 }

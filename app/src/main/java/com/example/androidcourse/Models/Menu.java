@@ -34,7 +34,7 @@ public class Menu {
         this.menuItems.add(new MenuItem(new Boost("Double Background", new BackgroundClicks("Double Background Click", 30000, false, 500), R.drawable.double_time, context)));
         this.menuItems.add(new MenuItem(new Boost("Quad Background", new BackgroundClicks("Quad Background Click", 15000, false, 250), R.drawable.four_time, context)));
         this.menuItems.add(new MenuItem(new Boost("Octa Background", new BackgroundClicks("Octa Background Click", 10000, false, 125), R.drawable.eight_time, context)));
-        this.menuItems.add(new MenuItem(new SpecialItem("Double Clicker", new DoubleClick("Twice", 30000, false, 1000), R.drawable.four_time, context)));
+        this.menuItems.add(new MenuItem(new SpecialItem("Double Clicker", new DoubleClick("Twice", 30000, 2), R.drawable.double_time, context)));
         Log.d("Debug", "Menu Filled "+ this.getMenuItems().size());
     }
 

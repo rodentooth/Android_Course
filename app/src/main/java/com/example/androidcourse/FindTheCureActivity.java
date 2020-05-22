@@ -152,7 +152,7 @@ public class FindTheCureActivity extends AppCompatActivity {
     }
 
     public void getPoint(View view){
-        scoreObj.addPoint(1);
+        scoreObj.addPoint(1, true);
         //check whether the cure was found!
         if (scoreObj.checkIfCureWasFound()){ // do stuff when the cure was found!
             increaseNrOfWinsFound();

@@ -16,16 +16,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class DoubleClick extends Effect implements LifecycleOwner {
+public class DoubleClick extends Effect {
 
     private boolean started = false;
-    public DoubleClick(String name, long duration, boolean repeatable, long interval) {
-        super(name, duration, repeatable, interval);
+    private int multiplicator = 0;
+    public DoubleClick(String name, long duration, int multiplicator) {
+        super(name, duration, false, 0);
+        this.multiplicator = multiplicator;
     }
 
     @Override
     public void effect() {
         Log.d("debug", "Effect Executed!");
+        Score.getInstance().addPoint((this.multiplicator) -1, false);
     }
 
     @Override
@@ -33,33 +36,20 @@ public class DoubleClick extends Effect implements LifecycleOwner {
         if(!started) {
             started = true;
             startMilliseconds = System.currentTimeMillis();
-            if (this.duration > 0) {
-                Timer timer = new Timer(true);
-                if (this.interval > 0) {
-                            // Score.getInstance().getScorePoints().observeForever();
-                    timer.schedule(new TimerTask() {
+                // Timer timer = new Timer(true);
+                    Score.getInstance().getClickCount().observeForever(new Observer<AtomicInteger>() {
                         @Override
-                        public void run() {
-                            if (System.currentTimeMillis() - startMilliseconds > duration) {
-                                timer.cancel();
-                                Log.d("debug", "Effect Terminated!");
-                            } else {
-                                effect();
-                            }
+                        public void onChanged(AtomicInteger atomicInteger) {
+                                    if (System.currentTimeMillis() - startMilliseconds > duration) { // Check if the effect is still active.
+                                        // timer.cancel();
+                                        Score.getInstance().getClickCount().removeObserver(this);
+                                        Log.d("debug", "Effect Terminated!");
+                                    } else {
+                                        effect();
+                                    }
                         }
-                    }, 0, duration);
-                }
-            }
-            else{
-                effect();
+                    });
             }
 
-        }
-    }
-
-    @NonNull
-    @Override
-    public Lifecycle getLifecycle() {
-        return null;
     }
 }
