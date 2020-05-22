@@ -14,8 +14,8 @@ public class PowerUp {
     String name;
     Effect effect;
     Bitmap icon;
-    long price;
-    public PowerUp(String name, Effect effect, int iconName, Context context, long price){
+    int price;
+    public PowerUp(String name, Effect effect, int iconName, Context context, int price){
         this.effect = effect;
         this.name = name;
         this.icon = BitmapFactory.decodeResource(context.getResources(), iconName);

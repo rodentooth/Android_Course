@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,8 @@ import com.example.androidcourse.FindTheCureActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });*/
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.megalovania);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
+
 
         findViewById(R.id.btnLeaderboard).setOnClickListener((event) ->
         {
@@ -59,5 +68,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.stop();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(mediaPlayer!=null&& mediaPlayer.isPlaying())
+        mediaPlayer.stop();
+        mediaPlayer = MediaPlayer.create(this, R.raw.megalovania);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
+
+    }
 }
