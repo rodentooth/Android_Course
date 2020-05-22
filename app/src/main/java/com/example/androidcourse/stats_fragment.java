@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import org.w3c.dom.Text;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class stats_fragment extends Fragment {
 
 
@@ -18,6 +21,7 @@ public class stats_fragment extends Fragment {
     private static final String CURRSCOREFINDCURE = "currscorefindcure";
     private static final String HIGHSCORE = "highscore";
     public static final String ALLTIMECLICKSCURE = "alltimeclickscure";
+    public static final String RECORDCLICKSPEED = "recordclickspeed";
 
     SharedPreferences sharedPreferences = App.getAppContext().getSharedPreferences(SHAREDPREF, App.getAppContext().MODE_PRIVATE);
 
@@ -25,6 +29,7 @@ public class stats_fragment extends Fragment {
     TextView nrAllCuresFound;
     TextView nrClicksEndless;
     TextView nrClicksCure;
+    TextView recordClickSpeed;
 
     public stats_fragment() {
 // Required empty public constructor
@@ -50,7 +55,14 @@ public class stats_fragment extends Fragment {
 
         nrClicksEndless = view.findViewById(R.id.tvStatEndlessClicks);
         String sEndless = sharedPreferences.getString("highscore", "");
-        Integer i = Integer.parseInt(sEndless.replaceAll("[\\D]", "")); // as the highscore of endlessmode is stored as a string, remove all non-int chars
+
+        Integer i;
+        if (sEndless == ""){
+            i = 0;
+        } else {
+            i = Integer.parseInt(sEndless.replaceAll("[\\D]", "")); // as the highscore of endlessmode is stored as a string, remove all non-int chars
+        }
+
         nrClicksEndless.setText("Clicks Endless: "+i);
 
         nrClicksCure = view.findViewById(R.id.tvStatAllCureClicks);
@@ -58,6 +70,13 @@ public class stats_fragment extends Fragment {
 
         nrAllCuresFound = view.findViewById(R.id.statNrCuresFound);
         nrAllCuresFound.setText("Cures Found: "+sharedPreferences.getInt("nrofcuresfound", 0));
+
+        recordClickSpeed = view.findViewById(R.id.statClickSpeed);
+        DecimalFormat df = new DecimalFormat(".00");
+        df.setRoundingMode(RoundingMode.DOWN); //round down
+        recordClickSpeed.setText("Top Speed: "+df.format(sharedPreferences.getFloat("recordclickspeed", 0))+" Clicks/Sec.");
+
+
 
         return view;
 
@@ -67,10 +86,16 @@ public class stats_fragment extends Fragment {
     public Integer calculateAllClicksFromAllModes(){
 
         Integer sum = 0;
+        Integer i;
 
         Integer sCure = sharedPreferences.getInt("currscorefindcure", 0);
         String sEndless = sharedPreferences.getString("highscore", "");
-        Integer i = Integer.parseInt(sEndless.replaceAll("[\\D]", "")); // as the highscore of endlessmode is stored as a string, remove all non-int chars
+        if (sEndless == ""){
+             i = 0;
+        } else{
+             i = Integer.parseInt(sEndless.replaceAll("[\\D]", "")); // as the highscore of endlessmode is stored as a string, remove all non-int chars
+        }
+
 
         System.out.println(i);
 

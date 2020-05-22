@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stats Fragment"
-        android:textSize="40dp"
+        android:textSize="30dp"
         android:textStyle="bold" />
 
     <TextView
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stats Fragment"
-        android:textSize="30dp"
+        android:textSize="27dp"
         android:textStyle="normal" />
 
     <TextView
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:text="Stats Fragment"
         android:textAlignment="viewStart"
-        android:textSize="30dp"
+        android:textSize="27dp"
         android:textStyle="normal" />
 
     <TextView
@@ -42,7 +42,16 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="Stats Fragment"
-        android:textSize="40dp"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/statClickSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Stats Fragment"
+        android:textSize="30dp"
         android:textStyle="bold" />
 
 </LinearLayout>
