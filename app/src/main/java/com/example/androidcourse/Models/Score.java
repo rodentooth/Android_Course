@@ -1,6 +1,7 @@
 package com.example.androidcourse.Models;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
@@ -17,12 +18,16 @@ public class Score {
     private MutableLiveData<AtomicInteger> scorePoints = new MutableLiveData<>();
     private MutableLiveData<AtomicInteger> clickCount = new MutableLiveData<>();
     private MutableLiveData<Integer> midSum = new MutableLiveData<>();
+    private MutableLiveData<Integer> money = new MutableLiveData<>();
 
 
     public static final String SHAREDPREF = "sharedpref";
     public static final String HIGHSCORE = "highscore";
+    public static final String MONEY = "money";
 
     public Score() {
+        loadMoney();
+
         scorePoints.observeForever(new Observer<AtomicInteger>() {
             boolean currentlyRunning = false;
             @Override
@@ -54,13 +59,24 @@ public class Score {
             this.clickCount.getValue().addAndGet(1);
             this.clickCount.postValue(clickCount.getValue());
         }
-        this.scorePoints.getValue().addAndGet(amount);
+        for (int i = 0; i < amount; i++) {
+            int value = this.scorePoints.getValue().incrementAndGet();
+            if((value % 10) == 0){
+                Log.d("MONEY ", money.getValue().toString());
+                money.postValue(money.getValue() + 1);
+                saveMoney();
+            }
+        }
         this.scorePoints.postValue(scorePoints.getValue());
         saveScore();
     }
 
     public int getScore() {
         return scorePoints.getValue().intValue();
+    }
+
+    public MutableLiveData<Integer> getMoney() {
+        return money;
     }
 
     // Returns the object
@@ -87,6 +103,20 @@ public class Score {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(HIGHSCORE, scorepoints);
         editor.apply();
+    }
+
+    public void saveMoney() {
+        SharedPreferences sharedPreferences = App.getAppContext().getSharedPreferences(SHAREDPREF, App.getAppContext().MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(MONEY, money.getValue().toString());
+        editor.apply();
+    }
+
+    public void loadMoney(){
+        //get the shared preferences
+        String savedMoney = App.getAppContext().getSharedPreferences(SHAREDPREF,  App.getAppContext().MODE_PRIVATE).getString(MONEY,"0" );
+
+        this.money.setValue(Integer.valueOf(savedMoney));
     }
 
     public MutableLiveData<AtomicInteger> loadScore(){
