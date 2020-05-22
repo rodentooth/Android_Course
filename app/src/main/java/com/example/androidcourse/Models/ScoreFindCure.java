@@ -6,6 +6,9 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.androidcourse.App;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ScoreFindCure {
@@ -16,6 +19,8 @@ public class ScoreFindCure {
     public static final String CURETARGETSCORE = "curetargetscore";
     public static final String NROFCURESFOUND = "nrofcuresfound";
     public static final String ALLTIMECLICKSCURE = "alltimeclickscure";
+
+
 
 
     private ScoreFindCure () {
@@ -34,6 +39,8 @@ public class ScoreFindCure {
         scorePointsFindCure.getValue().addAndGet(amount);
         scorePointsFindCure.postValue(scorePointsFindCure.getValue());
         inceaseAllTimeClicksCure();
+
+
         saveScore();
     }
 
@@ -74,6 +81,8 @@ public class ScoreFindCure {
         scorePointsFindCure.setValue(new AtomicInteger(sharedPreferences.getInt(CURRSCOREFINDCURE,0 )));
         return scorePointsFindCure;
     }
+
+
 
 
 }

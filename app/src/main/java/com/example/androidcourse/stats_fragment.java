@@ -44,6 +44,7 @@ public class stats_fragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_stats, container, false); // Inflate the layout for this fragment
 
+        // assign and fill the textviews
         scoreAllTaps = view.findViewById(R.id.tvStatAllClicks);
         scoreAllTaps.setText("Total Clicks: "+calculateAllClicksFromAllModes().toString());
 
@@ -54,8 +55,6 @@ public class stats_fragment extends Fragment {
 
         nrClicksCure = view.findViewById(R.id.tvStatAllCureClicks);
         nrClicksCure.setText("Clicks Cure: "+sharedPreferences.getInt("alltimeclickscure", 0));
-
-
 
         nrAllCuresFound = view.findViewById(R.id.statNrCuresFound);
         nrAllCuresFound.setText("Cures Found: "+sharedPreferences.getInt("nrofcuresfound", 0));

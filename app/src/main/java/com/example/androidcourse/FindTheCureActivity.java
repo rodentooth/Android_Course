@@ -21,6 +21,7 @@ import com.example.androidcourse.Models.CustomMenuItemAdapter;
 import com.example.androidcourse.Models.Menu;
 import com.example.androidcourse.Models.MenuItem;
 import com.example.androidcourse.Models.ScoreFindCure;
+import com.example.androidcourse.Models.SpeedTracker;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -35,6 +36,7 @@ public class FindTheCureActivity extends AppCompatActivity {
     TextView score;
     TextView difficulty;
     TextView scoreRN;
+    TextView clickSpeed;
     ImageView play;
 
     ScoreFindCure scoreObj = ScoreFindCure.getInstance();
@@ -47,6 +49,7 @@ public class FindTheCureActivity extends AppCompatActivity {
     private static final String CURRSCOREFINDCURE = "currscorefindcure";
     private static final String NROFCURESFOUND = "nrofcuresfound";
 
+    SpeedTracker s = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -57,6 +60,7 @@ public class FindTheCureActivity extends AppCompatActivity {
         difficulty = findViewById(R.id.tvDifficulty);
         scoreRN = findViewById(R.id.tvCurrentScore);
         play = findViewById(R.id.ivPlayButton);
+        clickSpeed = findViewById(R.id.tvClickSpeed);
 
         difficulty.setText(sharedPreferences.getString("curedifficulty", null));
         int sharedPrefCureTarget = sharedPreferences.getInt("curetargetscore", 0);
@@ -155,6 +159,13 @@ public class FindTheCureActivity extends AppCompatActivity {
 
     public void getPoint(View view){
         scoreObj.addPoint(1, true);
+        if (s != null){
+            clickSpeed.setText(s.trackTimeSpentForClick());
+        } else {
+            s = new SpeedTracker();
+            clickSpeed.setText(s.trackTimeSpentForClick());
+
+        }
         //check whether the cure was found!
         if (scoreObj.checkIfCureWasFound()){ // do stuff when the cure was found!
             increaseNrOfWinsFound();

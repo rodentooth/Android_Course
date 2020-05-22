@@ -23,6 +23,7 @@ import com.example.androidcourse.Models.CustomMenuItemAdapter;
 import com.example.androidcourse.Models.Menu;
 import com.example.androidcourse.Models.MenuItem;
 import com.example.androidcourse.Models.Score;
+import com.example.androidcourse.Models.SpeedTracker;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,6 +35,7 @@ public class EndlessModeActivity extends AppCompatActivity {
     TextView score;
     TextView scoreRN;
     ImageView play;
+    TextView clickSpeed;
     int scorecounter; //needs to be changed vor shared preferences
 
     Score scoreObj = Score.getInstance();
@@ -42,6 +44,8 @@ public class EndlessModeActivity extends AppCompatActivity {
 
     public static final String SHAREDPREF = "sharedpref";
     public static final String HIGHSCORE = "highscore";
+
+    SpeedTracker s = null;
 
 
     // Temporary Menu Shizzle
@@ -61,6 +65,7 @@ public class EndlessModeActivity extends AppCompatActivity {
         score = findViewById(R.id.tvScore);
         scoreRN = findViewById(R.id.tvCurrentScore);
         play = findViewById(R.id.ivPlayButton);
+        clickSpeed = findViewById(R.id.tvClickspeed);
 
 
         findViewById(R.id.openMenu).setOnClickListener((event) ->
@@ -149,6 +154,14 @@ public class EndlessModeActivity extends AppCompatActivity {
 
     public void getPoint(View view){
         scoreObj.addPoint(1, true);
+        if (s != null){ //check if object is already initialized
+            clickSpeed.setText(s.trackTimeSpentForClick());
+        } else {
+            s = new SpeedTracker();
+            clickSpeed.setText(s.trackTimeSpentForClick());
+
+        }
+
     }
 
 
