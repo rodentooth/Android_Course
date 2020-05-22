@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -123,7 +124,7 @@ public class EndlessModeActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.custom_dialog);
         if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // this is optional
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         ListView listView = dialog.findViewById(R.id.lv_menu);
         TextView tv = dialog.findViewById(R.id.tv_popup_title);
@@ -132,8 +133,13 @@ public class EndlessModeActivity extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener((adapterView, view, which, l) -> {
             MenuItem item = menu.getMenuItems().get(which);
-            item.getItem().getEffect().runEffect(); // Executes the effect of the bought Item
-            dialog.dismiss();
+            boolean success = Menu.getMenu(this).makeTransaction(item);
+            if(success){
+                item.getItem().getEffect().runEffect(); // Executes the effect of the bought Item
+                dialog.dismiss();
+            }else{
+                Toast.makeText(App.getAppContext(), "Not enough Money", Toast.LENGTH_SHORT).show();
+            }
         });
         dialog.show();
     }
