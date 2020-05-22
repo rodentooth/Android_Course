@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if(mediaPlayer!=null)
+        mediaPlayer.stop();
         mediaPlayer = MediaPlayer.create(this, R.raw.megalovania);
         mediaPlayer.start();
 
