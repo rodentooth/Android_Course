@@ -9,17 +9,22 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import org.w3c.dom.Text;
+
 public class stats_fragment extends Fragment {
 
 
     private static final String SHAREDPREF = "sharedpref";
     private static final String CURRSCOREFINDCURE = "currscorefindcure";
     private static final String HIGHSCORE = "highscore";
+    public static final String ALLTIMECLICKSCURE = "alltimeclickscure";
 
     SharedPreferences sharedPreferences = App.getAppContext().getSharedPreferences(SHAREDPREF, App.getAppContext().MODE_PRIVATE);
 
     TextView scoreAllTaps;
     TextView nrAllCuresFound;
+    TextView nrClicksEndless;
+    TextView nrClicksCure;
 
     public stats_fragment() {
 // Required empty public constructor
@@ -41,6 +46,16 @@ public class stats_fragment extends Fragment {
 
         scoreAllTaps = view.findViewById(R.id.tvStatAllClicks);
         scoreAllTaps.setText("Total Clicks: "+calculateAllClicksFromAllModes().toString());
+
+        nrClicksEndless = view.findViewById(R.id.tvStatEndlessClicks);
+        String sEndless = sharedPreferences.getString("highscore", "");
+        Integer i = Integer.parseInt(sEndless.replaceAll("[\\D]", "")); // as the highscore of endlessmode is stored as a string, remove all non-int chars
+        nrClicksEndless.setText("Clicks Endless: "+i);
+
+        nrClicksCure = view.findViewById(R.id.tvStatAllCureClicks);
+        nrClicksCure.setText("Clicks Cure: "+sharedPreferences.getInt("alltimeclickscure", 0));
+
+
 
         nrAllCuresFound = view.findViewById(R.id.statNrCuresFound);
         nrAllCuresFound.setText("Cures Found: "+sharedPreferences.getInt("nrofcuresfound", 0));

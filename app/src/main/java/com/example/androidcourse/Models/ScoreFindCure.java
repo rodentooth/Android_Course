@@ -15,6 +15,7 @@ public class ScoreFindCure {
     public static final String CURRSCOREFINDCURE = "currscorefindcure"; // the current score
     public static final String CURETARGETSCORE = "curetargetscore";
     public static final String NROFCURESFOUND = "nrofcuresfound";
+    public static final String ALLTIMECLICKSCURE = "alltimeclickscure";
 
 
     private ScoreFindCure () {
@@ -32,6 +33,7 @@ public class ScoreFindCure {
     public void addPoint(int amount, boolean click) {
         scorePointsFindCure.getValue().addAndGet(amount);
         scorePointsFindCure.postValue(scorePointsFindCure.getValue());
+        inceaseAllTimeClicksCure();
         saveScore();
     }
 
@@ -49,6 +51,15 @@ public class ScoreFindCure {
 
     public MutableLiveData<AtomicInteger> getScorePoints() {
         return scorePointsFindCure;
+    }
+
+    public void inceaseAllTimeClicksCure(){
+        SharedPreferences sharedPreferences = App.getAppContext().getSharedPreferences(SHAREDPREF, App.getAppContext().MODE_PRIVATE);
+        Integer allTimeClicksCure = sharedPreferences.getInt("alltimeclickscure", 0);
+        allTimeClicksCure++;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("alltimeclickscure", allTimeClicksCure);
+        editor.apply();
     }
 
     public void saveScore() {
