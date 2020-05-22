@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.megalovania);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
+        mediaPlayer.setLooping(true);
 
 
         findViewById(R.id.btnLeaderboard).setOnClickListener((event) ->
@@ -76,10 +77,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(mediaPlayer!=null)
+        if(mediaPlayer!=null&& mediaPlayer.isPlaying())
         mediaPlayer.stop();
         mediaPlayer = MediaPlayer.create(this, R.raw.megalovania);
+        mediaPlayer.setLooping(true);
         mediaPlayer.start();
+        mediaPlayer.setLooping(true);
 
     }
 }
