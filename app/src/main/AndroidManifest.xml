@@ -14,10 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round_demo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".splash"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Leaderboard_Stats"
             android:label="@string/title_activity_leaderboard__stats"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.leaderboard.Leaderboard_Stats"
             android:label="@string/title_activity_leaderboard__stats"
@@ -27,7 +36,8 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".EndlessModeActivity" />
         <activity android:name=".FindTheCureActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
