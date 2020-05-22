@@ -14,6 +14,7 @@ public class ScoreFindCure {
     public static final String SHAREDPREF = "sharedpref";
     public static final String CURRSCOREFINDCURE = "currscorefindcure"; // the current score
     public static final String CURETARGETSCORE = "curetargetscore";
+    public static final String NROFCURESFOUND = "nrofcuresfound";
 
 
     private ScoreFindCure () {

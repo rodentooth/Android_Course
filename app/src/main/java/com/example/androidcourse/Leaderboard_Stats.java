@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 
 public class Leaderboard_Stats extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class Leaderboard_Stats extends AppCompatActivity {
 
         FrameLayout simpleFrameLayout;
         TabLayout tabLayout;
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,9 @@ public class Leaderboard_Stats extends AppCompatActivity {
             TabLayout.Tab secondTab = tabLayout.newTab();
             secondTab.setText("Stats"); // set the Text for the second Tab
             tabLayout.addTab(secondTab); // add  the tab  in the TabLayout
+
+
+
 
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
@@ -60,9 +65,11 @@ public class Leaderboard_Stats extends AppCompatActivity {
                             break;
                         case 1:
                             fragment = new stats_fragment();
+
                             break;
 
                     }
+
                     FragmentManager fm = getSupportFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
                     ft.replace(R.id.simpleFrameLayout, fragment);

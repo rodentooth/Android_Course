@@ -21,6 +21,8 @@ import com.example.androidcourse.Models.CustomMenuItemAdapter;
 import com.example.androidcourse.Models.Menu;
 import com.example.androidcourse.Models.MenuItem;
 import com.example.androidcourse.Models.ScoreFindCure;
+
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -43,6 +45,7 @@ public class FindTheCureActivity extends AppCompatActivity {
     public static final String CURETARGETSCORE = "curetargetscore";
     public static final String CUREDIFFICULTY = "curedifficulty";
     private static final String CURRSCOREFINDCURE = "currscorefindcure";
+    private static final String NROFCURESFOUND = "nrofcuresfound";
 
 
     @Override
@@ -104,10 +107,10 @@ public class FindTheCureActivity extends AppCompatActivity {
     }
 
     public void setCureTargetScore(String s) {
-        //String[] listItems = getResources().getStringArray(R.array.difficultyFindCure);
-        // Note: Find way to make the case loop with the string array instead of hardcoded strings
+
         int range = 0;
         int targetScore;
+
         switch(s) {
             case "Easy (Range: 100)": range = 100;
             break;
@@ -119,7 +122,8 @@ public class FindTheCureActivity extends AppCompatActivity {
             break;
         }
 
-        targetScore = ThreadLocalRandom.current().nextInt(0, range + 1);
+        Random rand = new Random();
+        targetScore = rand.nextInt(range - 0)+1;
 
         // save in sharedPreference
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -127,7 +131,6 @@ public class FindTheCureActivity extends AppCompatActivity {
         editor.putInt(CURETARGETSCORE, targetScore);
         editor.apply();
         System.out.println(sharedPreferences.getAll());
-
 
     }
 
@@ -153,9 +156,9 @@ public class FindTheCureActivity extends AppCompatActivity {
     public void getPoint(View view){
         scoreObj.addPoint(1, true);
         //check whether the cure was found!
-        if (scoreObj.checkIfCureWasFound()){ //
-
-           Dialog dialog = getGameWonDialog();
+        if (scoreObj.checkIfCureWasFound()){ // do stuff when the cure was found!
+            increaseNrOfWinsFound();
+            Dialog dialog = getGameWonDialog();
             dialog.show();
             resetValues();
         }
@@ -219,6 +222,16 @@ public class FindTheCureActivity extends AppCompatActivity {
         AlertDialog dialog = alertBuilder.create();
         dialog.setCanceledOnTouchOutside(false);
         return dialog;
+
+    }
+
+    public void increaseNrOfWinsFound(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Integer nrOfCures = sharedPreferences.getInt("nrofcuresfound", 0);
+        nrOfCures++;
+        editor.putInt(NROFCURESFOUND, nrOfCures);
+        editor.apply();
+        System.out.println(sharedPreferences.getAll());
 
     }
 
