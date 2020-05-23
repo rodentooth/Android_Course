@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Android Course.iml" filepath="$PROJECT_DIR$/../Android Course.iml" group="Android Course" />
+      <module fileurl="file://$PROJECT_DIR$/../Android_Course_tapping_game-Android Course.iml" filepath="$PROJECT_DIR$/../Android_Course_tapping_game-Android Course.iml" group="Android Course" />
+      <module fileurl="file://$PROJECT_DIR$/Android_Course_tapping_game-app.iml" filepath="$PROJECT_DIR$/Android_Course_tapping_game-app.iml" group="Android Course/app" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" group="Android Course/app" />
     </modules>
   </component>

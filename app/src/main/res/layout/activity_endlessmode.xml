@@ -1,56 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" android:id="@+id/linearLayout">
 
-    <TextView
-        android:id="@+id/tvScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tvScore"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvCurrentScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-    />
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/ivMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#FFFFFF"
+            android:contentDescription="@string/ivMain"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_menu_bg" />
 
-    <TextView
-        android:id="@+id/tvClickspeed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        <TableRow
+            android:id="@+id/topTable"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:background="@color/colorPrimaryDark">
 
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="8dp"
+                android:text="@string/tvScore"
+                android:textColor="#ffffff"
+                android:textSize="24dp" />
 
-    <ImageView
-        android:id="@+id/ivPlayButton"
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:contentDescription="@string/ivPlay_name"
-        android:onClick="getPoint"
-        android:src="@drawable/virus"
+            <TextView
+                android:id="@+id/tvCurrentScore"
+                android:layout_width="41dp"
+                android:layout_height="wrap_content"
 
-        />
+                android:layout_marginTop="20dp"
+                android:textColor="#ffffff"
+                android:textSize="24dp" />
 
+            <ImageView
+                android:id="@+id/moneybag"
+                android:layout_width="56dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/moneybag" />
 
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="15dp"/>
-    <Button
-        android:id="@+id/openMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="20dp"
-        android:enabled="true"
-        android:text="Menu"
-        />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="53dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+
+                android:text="1"
+                android:textColor="#ffffff"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/tvClickspeed"
+                android:layout_width="184dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="5px"
+                android:textColor="#ffffff"
+                android:textSize="24dp" />
+
+        </TableRow>
+
+        <ImageView
+            android:id="@+id/ivPlayButton"
+            android:layout_width="match_parent"
+            android:layout_height="397dp"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginBottom="98dp"
+            android:contentDescription="@string/ivPlay_name"
+
+            android:onClick="getPoint"
+            android:src="@drawable/virus1r"
+            app:layout_constraintBottom_toTopOf="@+id/topTable" />
+
+        <Button
+            android:id="@+id/openMenu"
+            android:layout_width="291dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="start"
+            android:layout_marginStart="58dp"
+            android:layout_marginEnd="62dp"
+            android:layout_marginBottom="17dp"
+            android:enabled="true"
+            android:text="Menu"
+            app:layout_constraintBottom_toTopOf="@+id/ivPlayButton" />
+    </RelativeLayout>
+
 
 </LinearLayout>
