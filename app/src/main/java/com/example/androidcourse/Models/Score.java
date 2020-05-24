@@ -55,6 +55,7 @@ public class Score {
     }
 
     public void addPoint(int amount, boolean click){
+        Log.d("Points added", ""+ amount);
         if(click){
             this.clickCount.getValue().addAndGet(1);
             this.clickCount.postValue(clickCount.getValue());
@@ -66,6 +67,7 @@ public class Score {
                 money.postValue(money.getValue() + 1);
                 saveMoney();
             }
+            this.scorePoints.postValue(scorePoints.getValue());
         }
         this.scorePoints.postValue(scorePoints.getValue());
         saveScore();

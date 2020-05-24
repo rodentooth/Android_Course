@@ -53,6 +53,5 @@ public class SpeedTracker {
             editor.apply();
             System.out.println("New record was found: "+d );
         }
-
     }
 }

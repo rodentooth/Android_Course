@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MultiClick extends Effect {
 
-    private boolean started = false;
+    private boolean active = false;
     private int multiplicator = 0;
     public MultiClick(String name, long duration, int multiplicator) {
         super(name, duration, false, 0);
@@ -24,15 +24,15 @@ public class MultiClick extends Effect {
 
     @Override
     public void runEffect(){
-        if(!started) {
-            started = true;
+        if(!active) {
+            active = true;
             startMilliseconds = System.currentTimeMillis();
                     Score.getInstance().getClickCount().observeForever(new Observer<AtomicInteger>() {
                         @Override
                         public void onChanged(AtomicInteger atomicInteger) {
                                     if (System.currentTimeMillis() - startMilliseconds > duration) { // Check if the effect is still active.
                                         Score.getInstance().getClickCount().removeObserver(this); // Remove the observer, so it will not trigger again
-                                        started = false;
+                                        active = false;
                                         Log.d("debug", "Effect Terminated!");
                                     } else {
                                         effect();
@@ -40,5 +40,13 @@ public class MultiClick extends Effect {
                         }
                     });
             }
+    }
+
+    public int getMultiplicator() {
+        return multiplicator;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 }
