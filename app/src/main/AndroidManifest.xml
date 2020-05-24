@@ -34,8 +34,8 @@
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".EndlessModeActivity" />
-        <activity android:name=".FindTheCureActivity" />
+        <activity android:name=".EndlessModeActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FindTheCureActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
