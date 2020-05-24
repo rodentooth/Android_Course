@@ -52,9 +52,9 @@ public class Menu {
         this.menuItems.add(new MenuItem(new SpecialItem("Quad Click", new MultiClick("Quad Click", 60000, 4), R.drawable.four_time, context, 10)));
         this.menuItems.add(new MenuItem(new SpecialItem("Octa Click", new MultiClick("Octa Click", 60000, 8), R.drawable.eight_time, context, 100)));
 
-        this.menuItems.add(new MenuItem(new SpecialItem("200-Liquid", new SingleClick("200 Click", 200), R.drawable.science1, context, 20)));
-        this.menuItems.add(new MenuItem(new SpecialItem("400-Liquid", new SingleClick("400 Click", 400), R.drawable.science2, context, 500)));
-        this.menuItems.add(new MenuItem(new SpecialItem("600-Liquid", new SingleClick("600 Click", 600), R.drawable.science3, context, 700)));
+        this.menuItems.add(new MenuItem(new SpecialItem("200-Liquid", new SingleClick("200 Click", 200), R.drawable.science1, context, 60)));
+        this.menuItems.add(new MenuItem(new SpecialItem("400-Liquid", new SingleClick("400 Click", 400), R.drawable.science2, context, 80)));
+        this.menuItems.add(new MenuItem(new SpecialItem("600-Liquid", new SingleClick("600 Click", 600), R.drawable.science3, context, 100)));
 
         this.menuItems.add(new MenuItem(new Boost("My Prime!", new BackgroundClicks("Prime Avg Click", 10000, false, avgPerMillisecond), R.drawable.icon, context, 10)));
 
