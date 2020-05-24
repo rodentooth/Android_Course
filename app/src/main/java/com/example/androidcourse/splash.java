@@ -33,8 +33,16 @@ public class splash extends AppCompatActivity {
 
         final ViewGroup transitionsContainer = (ViewGroup) findViewById(R.id.transition_container);
 
-        //final ConstraintLayout button = (ConstraintLayout) transitionsContainer.findViewById(R.id.transition_container);
+        final ConstraintLayout button = (ConstraintLayout) findViewById(R.id.transition_container);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent justanintent_buimm = new Intent(splash.this, MainActivity.class);
+                startActivity(justanintent_buimm);
+                splash.this.finish();
+            }
+        });
 
         Handler handler = new Handler();
         final int[] i = {0};
