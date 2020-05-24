@@ -36,6 +36,7 @@ public class EndlessModeActivity extends AppCompatActivity {
     TextView scoreRN;
     ImageView play;
     TextView clickSpeed;
+    TextView moneyTV;
     int scorecounter; //needs to be changed vor shared preferences
 
     Score scoreObj = Score.getInstance();
@@ -60,12 +61,11 @@ public class EndlessModeActivity extends AppCompatActivity {
         final LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout);
         scoreObj =  Score.getInstance();
 
-
-
         score = findViewById(R.id.tvScore);
         scoreRN = findViewById(R.id.tvCurrentScore);
         play = findViewById(R.id.ivPlayButton);
         clickSpeed = findViewById(R.id.tvClickspeed);
+        moneyTV = findViewById(R.id.moneyScore);
 
 
         findViewById(R.id.openMenu).setOnClickListener((event) ->
@@ -84,6 +84,14 @@ public class EndlessModeActivity extends AppCompatActivity {
             }
         });
 
+        scoreObj.getMoney().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer atomicInteger) {
+                moneyTV.setText("" + atomicInteger); // update ^Money text if variable changes
+
+            }
+        });
+
 
         Score.getInstance().getMidSum().observe(this, new Observer<Integer>() {
             @Override
@@ -95,7 +103,6 @@ public class EndlessModeActivity extends AppCompatActivity {
 
                 final Animation out = new AlphaAnimation(1.0f, 0.0f);
 
-               // out.setRepeatMode(Animation.REVERSE);
                 out.setDuration(2000);
                 out.setAnimationListener(new Animation.AnimationListener() {
                     @Override
@@ -114,9 +121,6 @@ public class EndlessModeActivity extends AppCompatActivity {
                     }
                 });
                 textView.startAnimation(out);
-
-
-
 
             }
         });
@@ -147,6 +151,7 @@ public class EndlessModeActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+        dialog.getWindow().setLayout(1000, 1000);
     }
 
 
@@ -162,11 +167,5 @@ public class EndlessModeActivity extends AppCompatActivity {
 
         }
 
-    }
-
-
-    // No longer in use
-    public void loadScore(){
-        scoreRN.setText(Integer.toString(scoreObj.getScore()));
     }
 }

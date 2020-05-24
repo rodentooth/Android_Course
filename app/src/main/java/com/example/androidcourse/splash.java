@@ -46,6 +46,7 @@ public class splash extends AppCompatActivity {
 
         Handler handler = new Handler();
         final int[] i = {0};
+        // ! New Thread, runs eventhough you skip the splash screen.!
         Runnable splashAnimation = new Runnable() {
             public void run() {
                 try {
@@ -96,24 +97,14 @@ public class splash extends AppCompatActivity {
 
 
                     handler.postDelayed(this, 1000);
-
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-
-
         };
+        // Still gets executed, even if we clicked on the screen and skipped. Maybe needs a short check if it has already been skiped
         handler.postDelayed(splashAnimation, 3000);
-
-
-
     }
-
-
-
-
 }
 
 
