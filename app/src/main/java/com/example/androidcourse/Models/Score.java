@@ -18,7 +18,7 @@ public class Score {
     private MutableLiveData<AtomicInteger> scorePoints = new MutableLiveData<>();
     private MutableLiveData<AtomicInteger> clickCount = new MutableLiveData<>();
     private MutableLiveData<Integer> midSum = new MutableLiveData<>();
-    private MutableLiveData<Integer> money = new MutableLiveData<>();
+    private MutableLiveData<AtomicInteger> money = new MutableLiveData<>();
 
 
     public static final String SHAREDPREF = "sharedpref";
@@ -60,11 +60,17 @@ public class Score {
             this.clickCount.getValue().addAndGet(1);
             this.clickCount.postValue(clickCount.getValue());
         }
+        int count = 0;
         for (int i = 0; i < amount; i++) {
             int value = this.scorePoints.getValue().incrementAndGet();
+
             if((value % 10) == 0){
+                Log.d("TEST ",  "" + (count));
+                count++;
+
                 Log.d("MONEY ", money.getValue().toString());
-                money.postValue(money.getValue() + 1);
+                money.getValue().incrementAndGet();
+                money.postValue(money.getValue());
                 saveMoney();
             }
             this.scorePoints.postValue(scorePoints.getValue());
@@ -77,7 +83,7 @@ public class Score {
         return scorePoints.getValue().intValue();
     }
 
-    public MutableLiveData<Integer> getMoney() {
+    public MutableLiveData<AtomicInteger> getMoney() {
         return money;
     }
 
@@ -118,7 +124,7 @@ public class Score {
         //get the shared preferences
         String savedMoney = App.getAppContext().getSharedPreferences(SHAREDPREF,  App.getAppContext().MODE_PRIVATE).getString(MONEY,"0" );
 
-        this.money.setValue(Integer.valueOf(savedMoney));
+        this.money.setValue(new AtomicInteger(Integer.parseInt(savedMoney)));
     }
 
     public MutableLiveData<AtomicInteger> loadScore(){

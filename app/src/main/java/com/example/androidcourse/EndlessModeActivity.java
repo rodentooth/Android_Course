@@ -84,9 +84,9 @@ public class EndlessModeActivity extends AppCompatActivity {
             }
         });
 
-        scoreObj.getMoney().observe(this, new Observer<Integer>() {
+        scoreObj.getMoney().observe(this, new Observer<AtomicInteger>() {
             @Override
-            public void onChanged(Integer atomicInteger) {
+            public void onChanged(AtomicInteger atomicInteger) {
                 moneyTV.setText("" + atomicInteger); // update ^Money text if variable changes
 
             }

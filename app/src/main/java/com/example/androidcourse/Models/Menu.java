@@ -12,6 +12,7 @@ import com.example.androidcourse.Models.Effects.SingleClick;
 import com.example.androidcourse.R;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 // Purpose: Logic of Shop, Displaying items, buying, making transactions, checking balances
 public class Menu {
@@ -63,11 +64,10 @@ public class Menu {
     }
 
     public boolean makeTransaction(MenuItem item){
-        if(item.getItem().price <= Score.getInstance().getMoney().getValue()){
-            Log.d("Money LEft", " "+   Score.getInstance().getMoney().getValue());
-            Score.getInstance().getMoney().postValue(Score.getInstance().getMoney().getValue() - item.getItem().price); // Remove money from the client
-            Log.d("Money LEft", " "+   Score.getInstance().getMoney().getValue());
-
+        if(item.getItem().price <= Score.getInstance().getMoney().getValue().intValue()){
+            Log.d("Money First", " "+   Score.getInstance().getMoney().getValue());
+            Score.getInstance().getMoney().setValue(new AtomicInteger(Score.getInstance().getMoney().getValue().intValue() - item.getItem().price)); // Remove money from the client
+            Log.d("Money Left", " "+   Score.getInstance().getMoney().getValue());
             Score.getInstance().saveMoney();
             return true;
         }
