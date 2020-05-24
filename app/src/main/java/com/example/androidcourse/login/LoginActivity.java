@@ -1,5 +1,8 @@
 package com.example.androidcourse.login;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.StringRes;
@@ -16,7 +19,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidcourse.App;
+import com.example.androidcourse.MainActivity;
 import com.example.androidcourse.R;
+import com.example.androidcourse.data.HighscoreHandler;
 import com.example.androidcourse.data.PostRequest;
 
 import java.util.ArrayList;
@@ -33,11 +39,32 @@ public class LoginActivity extends AppCompatActivity {
     Button loginBtn;
     Button registerBtn;
     Button submitBtn;
+    Button goHomeBtn;
+    int highscore;
+    String gamemode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                highscore= 0;
+                gamemode=null;
+            } else {
+                highscore= extras.getInt("highscore");
+                gamemode= extras.getString("gamemode");
+            }
+        } else {
+            highscore= (int) savedInstanceState.getSerializable("highscore");
+            gamemode= (String) savedInstanceState.getSerializable("gamemode");
+        }
+
 
 
         usernameEditText         = findViewById(R.id.username);
@@ -47,6 +74,16 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn                   = findViewById(R.id.login);
         registerBtn                = findViewById(R.id.register);
         submitBtn                  = findViewById(R.id.submit);
+        goHomeBtn                  = findViewById(R.id.backtohome);
+
+        goHomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent justanintent_buimm = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(justanintent_buimm);
+                LoginActivity.this.finish();
+            }
+        });
         final boolean[] isRegistering = {true};
 
         TextWatcher afterTextChangedListener = new TextWatcher() {
@@ -121,7 +158,7 @@ public class LoginActivity extends AppCompatActivity {
                     final PostRequest PR = new PostRequest(URL,postData,true);
                     PR.setOnPostExecuteFunction(new Callable<Void>() {
                         public Void call() {
-                            return resultHandler(PR);
+                            return resultHandler(PR,LoginActivity.this);
                         }
                     });
                     PR.execute();
@@ -135,17 +172,29 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private void updateUiWithUser() {
+    private void updateUiWithUser(Activity a) {
         String welcome = getString(R.string.welcome) ;
-        // TODO : initiate successful logged in experience
+
+        SharedPreferences.Editor sharedPreferencesEditor = App.getAppContext().getSharedPreferences("login", App.getAppContext().MODE_PRIVATE).edit();
+        sharedPreferencesEditor.putString("username", usernameEditText.getText().toString()).apply();
+        sharedPreferencesEditor.apply();
+
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+
+        new HighscoreHandler(gamemode,highscore,a);
+
+        Intent justanintent_buimm = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(justanintent_buimm);
+        LoginActivity.this.finish();
+
+
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
-    private Void resultHandler(PostRequest pr){
+    private Void resultHandler(PostRequest pr, Activity a){
 
         String result = pr.getResult();
         Log.println(Log.DEBUG,"Result",result);
@@ -154,7 +203,7 @@ public class LoginActivity extends AppCompatActivity {
         }else if(result.equals("0")){
             Toast.makeText(getApplicationContext(), "Wrong Credentials!", Toast.LENGTH_SHORT).show();
         }else if(result.equals("1")){
-            updateUiWithUser();
+            updateUiWithUser(a);
         }
 
         return null;
