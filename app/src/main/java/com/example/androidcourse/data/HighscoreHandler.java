@@ -43,7 +43,7 @@ public class HighscoreHandler {
             postData.add("highscore");
             postData.add(String.valueOf(HighScore));
 
-            final PostRequest PR = new PostRequest("http://tappinggame.frozensparks.com/uploadHighScore.php", postData, true);
+            final PostRequest PR = new PostRequest("https://tappinggame.frozensparks.com/uploadHighScore.php", postData, true);
             PR.setOnPostExecuteFunction(new Callable<Void>() {
                 public Void call() {
                     return null;

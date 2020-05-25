@@ -56,7 +56,7 @@ public class leaderboard_fragment extends Fragment {
             postData.add("gamemode");
             postData.add("endless");
 
-            final PostRequest PR = new PostRequest("http://tappinggame.frozensparks.com/getHighScore.php", postData, true);
+            final PostRequest PR = new PostRequest("https://tappinggame.frozensparks.com/getHighScore.php", postData, true);
             PR.setOnPostExecuteFunction(new Callable<Void>() {
                 public Void call() {
                     return updateUI(PR,leaderboard_fragment.this);
