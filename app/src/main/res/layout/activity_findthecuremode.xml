@@ -23,32 +23,32 @@
         <TableRow
             android:id="@+id/topTable"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="69dp"
             android:background="@color/colorPrimaryDark">
 
             <TextView
                 android:id="@+id/tvScore"
-                android:layout_width="76dp"
+                android:layout_width="63dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/tvScore"
                 android:textColor="#ffffff"
-                android:textSize="24dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/tvCurrentScore"
-                android:layout_width="41dp"
+                android:layout_width="172dp"
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="20dp"
                 android:textColor="#ffffff"
-                android:textSize="24dp" />
+                android:textSize="18dp" />
 
             <ImageView
                 android:id="@+id/moneybag"
-                android:layout_width="59dp"
-                android:layout_height="46dp"
+                android:layout_width="60dp"
+                android:layout_height="27dp"
                 android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/moneybag" />
 
@@ -60,19 +60,7 @@
 
                 android:text="1"
                 android:textColor="#ffffff"
-                android:textSize="24dp" />
-
-
-            <TextView
-                android:id="@+id/tvDifficulty"
-                android:layout_width="172dp"
-                android:layout_height="61dp"
-
-                android:layout_marginTop="5dp"
-                android:textColor="#ffffff"
-                android:textSize="24dp"
-
-                />
+                android:textSize="18dp" />
 
 
         </TableRow>
@@ -81,21 +69,43 @@
         <TableRow
             android:id="@+id/topTable2"
             android:layout_width="match_parent"
-            android:layout_height="49dp"
+            android:layout_height="40dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="479dp"
-            android:background="@color/colorPrimaryDark">
+            android:layout_marginBottom="520dp"
+            android:background="#005e00">
 
             <TextView
                 android:id="@+id/tvClickSpeed"
-                android:layout_width="399dp"
+                android:layout_width="380dp"
                 android:layout_height="45dp"
-                android:layout_marginTop="5px"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16px"
                 android:layout_marginEnd="34dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="198dp"
                 android:textColor="#ffffff"
-                android:textSize="24dp" />
+                android:textSize="18dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/topTable3"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="557dp"
+            android:background="@color/colorPrimaryDarkish">
+
+            <TextView
+                android:id="@+id/tvDifficulty"
+                android:layout_width="393dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+
+                />
+
         </TableRow>
 
         <ImageView
@@ -103,11 +113,11 @@
             android:layout_width="match_parent"
             android:layout_height="348dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="122dp"
+            android:layout_marginBottom="151dp"
             android:contentDescription="@string/ivPlay_name"
 
             android:onClick="getPoint"
-            android:src="@drawable/science1" />
+            android:src="@drawable/science_btn" />
 
         <TableRow
         android:id="@+id/tableBot"
