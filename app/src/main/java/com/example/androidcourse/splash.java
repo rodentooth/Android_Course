@@ -34,20 +34,12 @@ public class splash extends AppCompatActivity {
         final ViewGroup transitionsContainer = (ViewGroup) findViewById(R.id.transition_container);
 
         final ConstraintLayout button = (ConstraintLayout) findViewById(R.id.transition_container);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent justanintent_buimm = new Intent(splash.this, MainActivity.class);
-                startActivity(justanintent_buimm);
-                splash.this.finish();
-            }
-        });
-
         Handler handler = new Handler();
+        Runnable splashAnimation = null;
+
         final int[] i = {0};
         // ! New Thread, runs eventhough you skip the splash screen.!
-        Runnable splashAnimation = new Runnable() {
+        splashAnimation = new Runnable() {
             public void run() {
                 try {
                     //prepare and send the data here..
@@ -56,7 +48,7 @@ public class splash extends AppCompatActivity {
                     TextView t = null;
                     Slide s = null;
 
-                    switch (i[0]){
+                    switch (i[0]) {
                         case 0:
                             t = transitionsContainer.findViewById(R.id.emanuel);
                             s = new Slide(Gravity.LEFT);
@@ -90,7 +82,7 @@ public class splash extends AppCompatActivity {
 
                     i[0]++;
 
-                    if (t!=null) {
+                    if (t != null) {
                         TransitionManager.beginDelayedTransition(transitionsContainer, s);
                         t.setVisibility(View.VISIBLE);
                     }
@@ -104,7 +96,20 @@ public class splash extends AppCompatActivity {
         };
         // Still gets executed, even if we clicked on the screen and skipped. Maybe needs a short check if it has already been skiped
         handler.postDelayed(splashAnimation, 3000);
+
+        Runnable finalSplashAnimation = splashAnimation;
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handler.removeCallbacks(finalSplashAnimation);
+                Intent justanintent_buimm = new Intent(splash.this, MainActivity.class);
+                startActivity(justanintent_buimm);
+                splash.this.finish();
+            }
+        });
     }
+
 }
 
 
