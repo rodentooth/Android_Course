@@ -40,8 +40,8 @@ public class CustomMenuItemAdapter extends ArrayAdapter<MenuItem> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.custom_dialog_listitem_layout, parent, false);
-        ImageView profilePic = rowView.findViewById(R.id.iv_user_profile_image);
-        TextView itemText = rowView.findViewById(R.id.tv_user_name);
+        ImageView profilePic = rowView.findViewById(R.id.icon_image);
+        TextView itemText = rowView.findViewById(R.id.item_name);
         Log.d("Debug", " Item "+ listItems.get(position));
         MenuItem powerUpItem = (MenuItem) listItems.get(position);
 
