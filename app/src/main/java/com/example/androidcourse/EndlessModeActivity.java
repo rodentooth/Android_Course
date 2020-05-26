@@ -26,6 +26,7 @@ import com.example.androidcourse.Models.MenuItem;
 import com.example.androidcourse.Models.Score;
 import com.example.androidcourse.Models.SpeedTracker;
 
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -99,6 +100,14 @@ public class EndlessModeActivity extends AppCompatActivity {
             public void onChanged(Integer sum) {
                 TextView textView = new TextView(App.getAppContext());
                 textView.setText("+ "+ sum);
+                //random numbers between 150 and 950 px from left border
+                int xlocation = new Random().nextInt(800) + 150; // [0, 400] + 200 => [200, 600]
+                //random numbers between 600 and 1200 px from top
+                int ylocation = new Random().nextInt(600) + 600; // [0, 60] + 20 => [20, 80]
+                textView.setX(xlocation);
+                textView.setY(ylocation);
+                textView.setTextColor(Color.WHITE);
+                textView.setTextSize(20);
                 ll.addView(textView);
                 Log.d(TAG, "" + sum); // update Score text if variable changes
 
