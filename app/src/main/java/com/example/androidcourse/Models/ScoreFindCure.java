@@ -14,11 +14,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ScoreFindCure {
     private static ScoreFindCure instance;
     private MutableLiveData<AtomicInteger> scorePointsFindCure = new MutableLiveData<>();
+    private MutableLiveData<Integer> midSum = new MutableLiveData<>();
     public static final String SHAREDPREF = "sharedpref";
     public static final String CURRSCOREFINDCURE = "currscorefindcure"; // the current score
     public static final String CURETARGETSCORE = "curetargetscore";
     public static final String NROFCURESFOUND = "nrofcuresfound";
     public static final String ALLTIMECLICKSCURE = "alltimeclickscure";
+
 
 
 
@@ -52,6 +54,10 @@ public class ScoreFindCure {
             return false;
         }
     }
+    public MutableLiveData<Integer> getMidSum() {
+        return midSum;
+    }
+
     public int getScore() {
         return scorePointsFindCure.getValue().intValue();
     }
