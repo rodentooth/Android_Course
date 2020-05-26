@@ -1,14 +1,18 @@
 package com.example.androidcourse.Models;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import com.example.androidcourse.App;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ScoreFindCure {
@@ -26,7 +30,24 @@ public class ScoreFindCure {
 
 
     private ScoreFindCure () {
-
+        scorePointsFindCure.observeForever(new Observer<AtomicInteger>() {
+            boolean currentlyRunning = false;
+            @Override
+            public void onChanged(AtomicInteger atomicInteger) {
+                if(!currentlyRunning){
+                    currentlyRunning = true;
+                    int sum = atomicInteger.get();
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            midSum.postValue( ((atomicInteger.get() + 1)- sum) );
+                            Log.d("MidSum", "" + ((atomicInteger.get() + 1)- sum));
+                            currentlyRunning = false;
+                        }
+                    }, 1000);
+                }
+            }
+        });
     }
 
     public static ScoreFindCure getInstance() {

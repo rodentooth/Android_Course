@@ -122,7 +122,7 @@ public class FindTheCureActivity extends AppCompatActivity {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        ll.removeView(textView);
+                        ll.removeView(textView); // Remove it again, so it won't fill up the whole UI and memory
                     }
 
                     @Override
@@ -131,7 +131,6 @@ public class FindTheCureActivity extends AppCompatActivity {
                     }
                 });
                 textView.startAnimation(out);
-
             }
         });
     }
