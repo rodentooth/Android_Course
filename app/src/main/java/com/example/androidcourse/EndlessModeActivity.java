@@ -101,9 +101,9 @@ public class EndlessModeActivity extends AppCompatActivity {
                 TextView textView = new TextView(App.getAppContext());
                 textView.setText("+ "+ sum);
                 //random numbers between 150 and 950 px from left border
-                int xlocation = new Random().nextInt(800) + 150; // [0, 400] + 200 => [200, 600]
+                int xlocation = new Random().nextInt(800) + 150;
                 //random numbers between 600 and 1200 px from top
-                int ylocation = new Random().nextInt(600) + 600; // [0, 60] + 20 => [20, 80]
+                int ylocation = new Random().nextInt(600) + 600;
                 textView.setX(xlocation);
                 textView.setY(ylocation);
                 textView.setTextColor(Color.WHITE);

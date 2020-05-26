@@ -8,10 +8,14 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +24,7 @@ import androidx.lifecycle.Observer;
 import com.example.androidcourse.Models.CustomMenuItemAdapter;
 import com.example.androidcourse.Models.Menu;
 import com.example.androidcourse.Models.MenuItem;
+import com.example.androidcourse.Models.Score;
 import com.example.androidcourse.Models.ScoreFindCure;
 import com.example.androidcourse.Models.SpeedTracker;
 
@@ -61,6 +66,7 @@ public class FindTheCureActivity extends AppCompatActivity {
         scoreRN = findViewById(R.id.tvCurrentScore);
         play = findViewById(R.id.ivPlayButton);
         clickSpeed = findViewById(R.id.tvClickSpeed);
+        final RelativeLayout ll = (RelativeLayout) findViewById(R.id.relativeLayout);
 
         difficulty.setText(sharedPreferences.getString("curedifficulty", null));
         int sharedPrefCureTarget = sharedPreferences.getInt("curetargetscore", 0);
@@ -86,6 +92,46 @@ public class FindTheCureActivity extends AppCompatActivity {
             @Override
             public void onChanged(AtomicInteger atomicInteger) {
                 scoreRN.setText("" + atomicInteger.get()); // update Score text if variable changes
+            }
+        });
+
+        ScoreFindCure.getInstance().getMidSum().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer sum) {
+                TextView textView = new TextView(App.getAppContext());
+                textView.setText("+ "+ sum);
+                //random numbers between 150 and 950 px from left border
+                int xlocation = new Random().nextInt(800) + 150;
+                //random numbers between 600 and 1200 px from top
+                int ylocation = new Random().nextInt(600) + 600;
+                textView.setX(xlocation);
+                textView.setY(ylocation);
+                textView.setTextColor(Color.WHITE);
+                textView.setTextSize(20);
+                ll.addView(textView);
+                Log.d(TAG, "" + sum); // update Score text if variable changes
+
+                final Animation out = new AlphaAnimation(1.0f, 0.0f);
+
+                out.setDuration(2000);
+                out.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        ll.removeView(textView);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                textView.startAnimation(out);
+
             }
         });
     }
