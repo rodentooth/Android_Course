@@ -109,10 +109,7 @@ public class EndlessModeActivity extends AppCompatActivity {
                 textView.setTextColor(Color.WHITE);
                 textView.setTextSize(20);
                 ll.addView(textView);
-                Log.d(TAG, "" + sum); // update Score text if variable changes
-
                 final Animation out = new AlphaAnimation(1.0f, 0.0f);
-
                 out.setDuration(2000);
                 out.setAnimationListener(new Animation.AnimationListener() {
                     @Override
@@ -131,10 +128,8 @@ public class EndlessModeActivity extends AppCompatActivity {
                     }
                 });
                 textView.startAnimation(out);
-
             }
         });
-
         //loadScore();
     }
 
