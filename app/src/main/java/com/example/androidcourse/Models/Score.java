@@ -39,6 +39,7 @@ public class Score {
                         @Override
                         public void run() {
                             midSum.postValue( ((atomicInteger.get() + 1)- sum) );
+                            Log.d("MidSum", "" + ((atomicInteger.get() + 1)- sum));
                             currentlyRunning = false;
                         }
                     }, 1000);
@@ -145,6 +146,7 @@ public class Score {
 
         System.out.println("score is: "+scorePoints.getValue());
         clickCount.setValue(new AtomicInteger(0));
+
         return scorePoints;
     }
 }

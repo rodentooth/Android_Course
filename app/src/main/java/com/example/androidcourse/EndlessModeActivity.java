@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,7 +59,7 @@ public class EndlessModeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endlessmode);
-        final LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout);
+        final RelativeLayout ll = (RelativeLayout) findViewById(R.id.relativeLayout);
         scoreObj =  Score.getInstance();
 
         score = findViewById(R.id.tvScore);
