@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -115,7 +118,11 @@ public class EndlessModeActivity extends AppCompatActivity {
             @Override
             public void onChanged(Integer sum) {
                 TextView textView = new TextView(App.getAppContext());
-                textView.setText("+ "+ sum);
+                String temp = "+ "+sum;
+                SpannableString sumstyle = new SpannableString(temp);
+                sumstyle.setSpan(new StyleSpan(Typeface.BOLD),0, sumstyle.length(),0);
+                textView.setText(sumstyle);
+                textView.setText(sumstyle);
                 //random numbers between 150 and 950 px from left border
                 int xlocation = new Random().nextInt(800) + 150;
                 //random numbers between 600 and 1200 px from top
@@ -123,7 +130,7 @@ public class EndlessModeActivity extends AppCompatActivity {
                 textView.setX(xlocation);
                 textView.setY(ylocation);
                 textView.setTextColor(Color.WHITE);
-                textView.setTextSize(20);
+                textView.setTextSize(25);
                 ll.addView(textView);
                 final Animation out = new AlphaAnimation(1.0f, 0.0f);
                 out.setDuration(2000);
