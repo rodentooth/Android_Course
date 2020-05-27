@@ -6,8 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -101,15 +104,23 @@ public class FindTheCureActivity extends AppCompatActivity {
             @Override
             public void onChanged(Integer sum) {
                 TextView textView = new TextView(App.getAppContext());
+
                 textView.setText("+ " + sum);
+
+                String temp = "+ "+sum;
+                SpannableString sumstyle = new SpannableString(temp);
+                sumstyle.setSpan(new StyleSpan(Typeface.BOLD),0, sumstyle.length(),0);
+                textView.setText(sumstyle);
+
                 //random numbers between 150 and 950 px from left border
                 int xlocation = new Random().nextInt(800) + 150;
                 //random numbers between 600 and 1200 px from top
                 int ylocation = new Random().nextInt(600) + 600;
                 textView.setX(xlocation);
                 textView.setY(ylocation);
-                textView.setTextColor(Color.WHITE);
-                textView.setTextSize(20);
+                textView.setTextColor(Color.CYAN);
+                textView.setTextSize(25);
+
                 ll.addView(textView);
                 Log.d(TAG, "" + sum); // update Score text if variable changes
 
