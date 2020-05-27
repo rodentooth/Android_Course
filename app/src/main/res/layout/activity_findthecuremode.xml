@@ -46,22 +46,7 @@
                 android:textColor="#ffffff"
                 android:textSize="18dp" />
 
-            <ImageView
-                android:id="@+id/moneybag"
-                android:layout_width="60dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/moneybag" />
 
-            <TextView
-                android:id="@+id/moneyScore"
-                android:layout_width="55dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-
-                android:text="1"
-                android:textColor="#ffffff"
-                android:textSize="18dp" />
 
 
         </TableRow>
@@ -130,19 +115,6 @@
     </TableRow>
 
         <Button
-            android:id="@+id/openMenu"
-            android:layout_width="213dp"
-            android:layout_height="94dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="start"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="179dp"
-            android:layout_marginBottom="23dp"
-            android:background="@drawable/shop_btn"
-            android:enabled="true" />
-
-        <Button
             android:id="@+id/resetGame"
             android:layout_width="90dp"
             android:layout_height="90dp"
@@ -150,8 +122,8 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="start"
             android:layout_marginStart="-187dp"
-            android:layout_marginEnd="49dp"
-            android:layout_marginBottom="23dp"
+            android:layout_marginEnd="162dp"
+            android:layout_marginBottom="26dp"
             android:background="@drawable/repeat_btn"
             android:enabled="true" />
 

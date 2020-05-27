@@ -5,53 +5,187 @@
     android:background="#fff"
     android:baselineAligned="false"
     android:gravity="center"
-    android:orientation="vertical"
+    android:orientation="vertical">
 
-    >
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="fill_parent"
+        android:layout_height="400dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+
+        android:stretchColumns="0,1">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Total Clicks: "
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvStatAllClicks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stats Fragment"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Clicks Endless: "
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tvStatEndlessClicks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stats Fragment"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Clicks FindCure: "
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tvStatAllCureClicks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stats Fragment"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Cures Found: "
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/statNrCuresFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stats Fragment"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Easy Cures: "
+                android:textSize="20dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/nrOfEasyCures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Easy Cures: "
+                android:textSize="20dp"
+                android:textStyle="normal" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Medium Cures: "
+                android:textSize="20dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/nrOfMediumCures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Easy Cures: "
+                android:textSize="20dp"
+                android:textStyle="normal" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Hard Cures: "
+                android:textSize="20dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/nrOfHardCures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Easy Cures: "
+                android:textSize="20dp"
+                android:textStyle="normal" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Impossible Cures: "
+                android:textSize="20dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/nrOfImpossibleCures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Easy Cures: "
+                android:textSize="20dp"
+                android:textStyle="normal" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+
+                android:text="Top Speed: "
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/statClickSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Stats Fragment"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </TableRow>
 
 
-
+    </TableLayout>
     <TextView
-        android:id="@+id/tvStatAllClicks"
+
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stats Fragment"
-        android:textSize="30dp"
+        android:layout_height="50dp"
+        android:textAlignment="center"
+
+        android:text="Thanks for playing! "
+        android:textSize="20dp"
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tvStatEndlessClicks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stats Fragment"
-        android:textSize="27dp"
-        android:textStyle="normal" />
-
-    <TextView
-        android:id="@+id/tvStatAllCureClicks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stats Fragment"
-        android:textAlignment="viewStart"
-        android:textSize="27dp"
-        android:textStyle="normal" />
-
-    <TextView
-        android:id="@+id/statNrCuresFound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Stats Fragment"
-        android:textSize="30dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/statClickSpeed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Stats Fragment"
-        android:textSize="30dp"
-        android:textStyle="bold" />
-
 </LinearLayout>
