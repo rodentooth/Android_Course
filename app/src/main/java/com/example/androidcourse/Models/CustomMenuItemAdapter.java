@@ -21,14 +21,14 @@ import java.util.List;
 
 // Credits: https://stackoverflow.com/questions/15762905/how-can-i-display-a-list-view-in-an-android-alert-dialog
 public class CustomMenuItemAdapter extends ArrayAdapter<MenuItem> {
-        private final Context context;
-        private final List<MenuItem> listItems;
+    private final Context context;
+    private final List<MenuItem> listItems;
 
     public CustomMenuItemAdapter(@NonNull Context context, int resource, @NonNull List objects) {
         super(context, resource, objects);
-        Log.d("Debug",  "Size "+  objects.size());
+        Log.d("Debug", "Size " + objects.size());
         this.listItems = objects;
-        Log.d("Debug",  "Size "+  this.listItems.size());
+        Log.d("Debug", "Size " + this.listItems.size());
 
         this.context = context;
     }
@@ -42,7 +42,7 @@ public class CustomMenuItemAdapter extends ArrayAdapter<MenuItem> {
         View rowView = inflater.inflate(R.layout.custom_dialog_listitem_layout, parent, false);
         ImageView profilePic = rowView.findViewById(R.id.icon_image);
         TextView itemText = rowView.findViewById(R.id.item_name);
-        Log.d("Debug", " Item "+ listItems.get(position));
+        Log.d("Debug", " Item " + listItems.get(position));
         MenuItem powerUpItem = (MenuItem) listItems.get(position);
 
         itemText.setText(powerUpItem.toString());

@@ -96,6 +96,7 @@
                 android:text="Easy Cures: "
                 android:textSize="20dp"
                 android:textStyle="normal" />
+
             <TextView
                 android:id="@+id/nrOfEasyCures"
                 android:layout_width="wrap_content"
@@ -113,6 +114,7 @@
                 android:text="Medium Cures: "
                 android:textSize="20dp"
                 android:textStyle="normal" />
+
             <TextView
                 android:id="@+id/nrOfMediumCures"
                 android:layout_width="wrap_content"
@@ -130,6 +132,7 @@
                 android:text="Hard Cures: "
                 android:textSize="20dp"
                 android:textStyle="normal" />
+
             <TextView
                 android:id="@+id/nrOfHardCures"
                 android:layout_width="wrap_content"
@@ -147,6 +150,7 @@
                 android:text="Impossible Cures: "
                 android:textSize="20dp"
                 android:textStyle="normal" />
+
             <TextView
                 android:id="@+id/nrOfImpossibleCures"
                 android:layout_width="wrap_content"
@@ -154,6 +158,48 @@
                 android:text="Easy Cures: "
                 android:textSize="20dp"
                 android:textStyle="normal" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+
+                android:text="Gold earned: "
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/nrOfGoldEarned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Stats Fragment"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+
+                android:text="Items used: "
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/nrOfItemsUsed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Stats Fragment"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow>
@@ -179,13 +225,14 @@
 
 
     </TableLayout>
+
     <TextView
 
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:textAlignment="center"
-
         android:text="Thanks for playing! "
+
+        android:textAlignment="center"
         android:textSize="20dp"
         android:textStyle="bold" />
 </LinearLayout>

@@ -20,6 +20,9 @@ public class Menu {
     private static Menu menu; // Should be a singleton, since we only need one instance of the Menu, not multiple
     private String menuName;
     private Context context;
+
+    public static final String SHAREDPREF = "sharedpref";
+    public static final String COUNTITEMSUSED = "countitemsused";
     ArrayList<MenuItem> menuItems = new ArrayList<>();
     private Menu(String menuName, Context context){
         this.menuName = menuName;
@@ -69,6 +72,13 @@ public class Menu {
             Score.getInstance().getMoney().setValue(new AtomicInteger(Score.getInstance().getMoney().getValue().intValue() - item.getItem().price)); // Remove money from the client
             Log.d("Money Left", " "+   Score.getInstance().getMoney().getValue());
             Score.getInstance().saveMoney();
+
+            SharedPreferences sharedPreferences = App.getAppContext().getSharedPreferences(SHAREDPREF, App.getAppContext().MODE_PRIVATE);
+            Integer itemsUsed = sharedPreferences.getInt("countitemsused", 0);
+            itemsUsed++;
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt(COUNTITEMSUSED, itemsUsed);
+            editor.apply();
             return true;
         }
         return false;

@@ -26,6 +26,7 @@ public class Score {
     public static final String SHAREDPREF = "sharedpref";
     public static final String HIGHSCORE = "highscore";
     public static final String MONEY = "money";
+    public static final String ALLTIMECASH = "alltimecash";
 
     public Score() {
         loadMoney();
@@ -69,9 +70,16 @@ public class Score {
             int value = this.scorePoints.getValue().incrementAndGet();
 
             if((value % 10) == 0){
-                Log.d("TEST ",  "" + (count));
-                count++;
 
+                // increase all time earned gold for statistic
+                SharedPreferences sharedPreferences = App.getAppContext().getSharedPreferences(SHAREDPREF, App.getAppContext().MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                Integer gold = sharedPreferences.getInt("alltimecash", 0);
+                gold++;
+                editor.putInt(ALLTIMECASH, gold);
+                editor.apply();
+
+                // increase the amount of gold
                 Log.d("MONEY ", money.getValue().toString());
                 money.getValue().incrementAndGet();
                 money.postValue(money.getValue());
