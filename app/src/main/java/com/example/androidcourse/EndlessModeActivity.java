@@ -157,7 +157,6 @@ public class EndlessModeActivity extends AppCompatActivity {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         ListView listView = dialog.findViewById(R.id.lv_menu);
-        TextView tv = dialog.findViewById(R.id.tv_popup_title);
 
         ArrayAdapter arrayAdapter = new CustomMenuItemAdapter(this, R.layout.custom_dialog_listitem_layout, menu.getMenuItems());
         listView.setAdapter(arrayAdapter);
@@ -172,7 +171,7 @@ public class EndlessModeActivity extends AppCompatActivity {
             }
         });
         dialog.show();
-        dialog.getWindow().setLayout(1000, 1000);
+        //dialog.getWindow().setLayout();
     }
 
 

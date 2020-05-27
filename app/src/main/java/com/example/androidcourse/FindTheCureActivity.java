@@ -190,7 +190,6 @@ public class FindTheCureActivity extends AppCompatActivity {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // this is optional
         }
         ListView listView = dialog.findViewById(R.id.lv_menu);
-        TextView tv = dialog.findViewById(R.id.tv_popup_title);
 
         ArrayAdapter arrayAdapter = new CustomMenuItemAdapter(this, R.layout.custom_dialog_listitem_layout, menu.getMenuItems());
         listView.setAdapter(arrayAdapter);
