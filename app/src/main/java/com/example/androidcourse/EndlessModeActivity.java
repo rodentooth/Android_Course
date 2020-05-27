@@ -1,5 +1,6 @@
 package com.example.androidcourse;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Color;
@@ -25,6 +26,7 @@ import com.example.androidcourse.Models.Menu;
 import com.example.androidcourse.Models.MenuItem;
 import com.example.androidcourse.Models.Score;
 import com.example.androidcourse.Models.SpeedTracker;
+import com.example.androidcourse.data.HighscoreHandler;
 
 import java.util.Random;
 import java.util.Timer;
@@ -43,12 +45,11 @@ public class EndlessModeActivity extends AppCompatActivity {
 
     Score scoreObj = Score.getInstance();
 
-
-
     public static final String SHAREDPREF = "sharedpref";
     public static final String HIGHSCORE = "highscore";
 
     SpeedTracker s = null;
+
 
 
     // Temporary Menu Shizzle
@@ -78,6 +79,9 @@ public class EndlessModeActivity extends AppCompatActivity {
         scoreObj.loadScore();
 
 
+
+
+
         scoreObj.getScorePoints().observe(this, new Observer<AtomicInteger>() {
             @Override
             public void onChanged(AtomicInteger atomicInteger) {
@@ -86,11 +90,23 @@ public class EndlessModeActivity extends AppCompatActivity {
             }
         });
 
+        Activity a = this;
+        scoreObj.getClickCount().observe(this, new Observer<AtomicInteger>() {
+            @Override
+            public void onChanged(AtomicInteger atomicInteger) {
+                if(atomicInteger.intValue() % 50 == 0){
+                    Log.d(TAG, "Updated Score to Database");
+                    new HighscoreHandler("endless", Score.getInstance().getScorePoints().getValue().intValue(), a);
+                }
+            }
+        });
+
+
+
         scoreObj.getMoney().observe(this, new Observer<AtomicInteger>() {
             @Override
             public void onChanged(AtomicInteger atomicInteger) {
                 moneyTV.setText("" + atomicInteger); // update ^Money text if variable changes
-
             }
         });
 

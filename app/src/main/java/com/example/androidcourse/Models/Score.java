@@ -1,5 +1,6 @@
 package com.example.androidcourse.Models;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.util.Log;
 
@@ -7,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import com.example.androidcourse.App;
+import com.example.androidcourse.data.HighscoreHandler;
 import com.example.androidcourse.data.ObjectJsonConverter;
 
 import java.util.Timer;
@@ -60,6 +62,7 @@ public class Score {
         if(click){
             this.clickCount.getValue().addAndGet(1);
             this.clickCount.postValue(clickCount.getValue());
+
         }
         int count = 0;
         for (int i = 0; i < amount; i++) {
