@@ -12,6 +12,8 @@ public class MenuItem {
 
     @Override
     public String toString(){
-        return "" + item.name + " " + item.price + " Coins";
+
+        // so many spaces are not pretty, but it works :D
+        return "" + item.name + "                      " + item.price + " Coins";
     }
 }

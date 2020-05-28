@@ -45,11 +45,11 @@ public class Menu {
         int clickSpeedPerSecondHighScore = (int) f; // Parse and round down clickspeed per second
         int avgPerMillisecond = 1000 / clickSpeedPerSecondHighScore; // transform the format
 
-        this.menuItems.add(new MenuItem(new Boost("Single Background", new BackgroundClicks("Single Background Click", 60000, false, 1000), R.drawable.icon_edited, context, 5)));
-        this.menuItems.add(new MenuItem(new Boost("Double Background", new BackgroundClicks("Double Background Click", 30000, false, 500), R.drawable.double_time, context, 10)));
-        this.menuItems.add(new MenuItem(new Boost("Quad Background", new BackgroundClicks("Quad Background Click", 15000, false, 250), R.drawable.four_time, context, 50)));
-        this.menuItems.add(new MenuItem(new Boost("Octa Background", new BackgroundClicks("Octa Background Click", 10000, false, 125), R.drawable.eight_time, context, 100)));
-        this.menuItems.add(new MenuItem(new Boost("Hexa Background", new BackgroundClicks("Hexa Background Click", 5000, false, 62), R.drawable.sixteen_time, context, 200)));
+        this.menuItems.add(new MenuItem(new Boost("Single Background", new BackgroundClicks("Single Background Click", 60000, false, 1000), R.drawable.singleclick, context, 5)));
+        this.menuItems.add(new MenuItem(new Boost("Double Background", new BackgroundClicks("Double Background Click", 30000, false, 500), R.drawable.doubleclick, context, 10)));
+        this.menuItems.add(new MenuItem(new Boost("Quad Background", new BackgroundClicks("Quad Background Click", 15000, false, 250), R.drawable.quadclick, context, 50)));
+        this.menuItems.add(new MenuItem(new Boost("Octa Background", new BackgroundClicks("Octa Background Click", 10000, false, 125), R.drawable.octaclick, context, 100)));
+        this.menuItems.add(new MenuItem(new Boost("Hexa Background", new BackgroundClicks("Hexa Background Click", 5000, false, 62), R.drawable.sixteen_click, context, 200)));
 
         this.menuItems.add(new MenuItem(new SpecialItem("Double Click", new MultiClick("Double Click", 60000, 2), R.drawable.double_time, context, 5)));
         this.menuItems.add(new MenuItem(new SpecialItem("Quad Click", new MultiClick("Quad Click", 60000, 4), R.drawable.four_time, context, 10)));
